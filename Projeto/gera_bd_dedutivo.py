@@ -13,4 +13,4 @@ with open('base_TP.txt','r') as f1:
                 else:
                     dados+= f',\'{atributo}\''
 
-            f2.write(f'individuo({dados})\n')
+            f2.write(f'individuo({dados}).\n')
