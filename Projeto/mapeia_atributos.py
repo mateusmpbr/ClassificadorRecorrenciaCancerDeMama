@@ -1,57 +1,60 @@
-with open('bd_dedutivo_inteiro_python.txt','r') as f:
+with open('C:\\Users\\gabri\\Documents\\GitHub\\TP-LP\\Projeto\\nova coluna\\bd_dedutivo_inteiro_python_novaColuna.txt', 'r') as f:
     valor_total = [
-                    [0,0,0,0,0,0,0,0,0],
-                    [0,0,0],
-                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                    [0,0,0,0,0,0,0,0,0,0,0,0,0],
-                    [0,0],
-                    [0,0,0],
-                    [0,0],
-                    [0,0,0,0,0],
-                    [0,0]
-                ]
-    
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0],
+        [0, 0, 0],
+        [0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0]
+    ]
+
     valor_nao_recorrencia = [
-                    [0,0,0,0,0,0,0,0,0],
-                    [0,0,0],
-                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                    [0,0,0,0,0,0,0,0,0,0,0,0,0],
-                    [0,0],
-                    [0,0,0],
-                    [0,0],
-                    [0,0,0,0,0],
-                    [0,0]
-                ]
-                
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0],
+        [0, 0, 0],
+        [0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0]
+    ]
+
     valor_nao_recorrencia_teste = [
-                    [0,0,0,0,0,0,0,0,0],
-                    [0,0,0],
-                    [0,0,0,0,0,0,0,0,0,0,0,0],
-                    [0,0,0,0,0,0,0,0,0,0,0,0,0],
-                    [0,0],
-                    [0,0,0],
-                    [0,0],
-                    [0,0,0,0,0],
-                    [0,0]
-                ]
+        [0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+        [0, 0],
+        [0, 0, 0],
+        [0, 0],
+        [0, 0, 0, 0, 0],
+        [0, 0]
+    ]
 
     for index_line, line in enumerate(f):
         atributos = line.strip().split(',')
         for index_atributo, atributo in enumerate(atributos):
+            if (index_atributo == len(atributos)-1):
+                break
             atributo_aux = int(atributo) - 1
 
-            valor_total[index_atributo][atributo_aux]+=1
-
-            if(index_line <= 195):
-                valor_nao_recorrencia[index_atributo][atributo_aux]+=1
+            valor_total[index_atributo][atributo_aux] += 1
+            # print("recorrente?",atributos[len(atributos)-1])
+            if(atributos[len(atributos)-1] == '0'):
+                valor_nao_recorrencia[index_atributo][atributo_aux] += 1
 
             if(int(atributos[0]) > 5 or int(atributos[2]) < 5):
-                valor_nao_recorrencia_teste[index_atributo][atributo_aux]+=1
+                valor_nao_recorrencia_teste[index_atributo][atributo_aux] += 1
 
-    nome_atributos = ['idade','menopausa','tamanho do tumor','inv-nodes','node-caps','deg-malig','mama','breast-quad','irradiada']
+    nome_atributos = ['idade', 'menopausa', 'tamanho do tumor', 'inv-nodes',
+                      'node-caps', 'deg-malig', 'mama', 'breast-quad', 'irradiada']
 
     for i in range(9):
-        print('-----',nome_atributos[i],'-----')
-        print("VALOR TOTAL:",valor_total[i])
-        print("VALOR NAO RECORRENCIA",valor_nao_recorrencia[i])
-        print("VALOR NAO RECORRENCIA TESTE",valor_nao_recorrencia_teste[i])
+        print('-----', nome_atributos[i], '-----')
+        print("VALOR TOTAL:", valor_total[i])
+        print("VALOR NAO RECORRENCIA", valor_nao_recorrencia[i])
+        print("VALOR NAO RECORRENCIA TESTE", valor_nao_recorrencia_teste[i])
