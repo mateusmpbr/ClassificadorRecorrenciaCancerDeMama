@@ -1,4 +1,4 @@
-with open('C:\\Users\\gabri\\Documents\\GitHub\\TP-LP\\Projeto\\nova coluna\\bd_dedutivo_inteiro_python_novaColuna.txt', 'r') as f:
+with open('bd_dedutivo/padrao/bd_dedutivo_inteiro_python.txt','r') as f:
     valor_total = [
         [0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0],
