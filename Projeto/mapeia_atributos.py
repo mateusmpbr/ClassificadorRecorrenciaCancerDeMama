@@ -35,10 +35,10 @@ with open('bd_dedutivo/nova_coluna/bd_dedutivo_inteiro_python_novaColuna.txt','r
         [0, 0]
     ]
 
-    teste_recorrencia_certo = 0
-    teste_recorrencia_errado = 0
-    teste_nao_recorrencia_certo = 0
-    teste_nao_recorrencia_errado = 0
+    recorrencias_classificadas_corretamente = 0
+    recorrencias_classificadas_como_nao_recorrencias = 0
+    nao_recorrencias_classificadas_corretamente = 0
+    nao_recorrencias_classificadas_como_recorrencias = 0
 
     for index_line, line in enumerate(f):
         atributos = line.strip().split(',')
@@ -49,22 +49,24 @@ with open('bd_dedutivo/nova_coluna/bd_dedutivo_inteiro_python_novaColuna.txt','r
             atributo_aux = int(atributo) - 1
 
             valor_total[index_atributo][atributo_aux] += 1
-            # print("recorrente?",atributos[-1])
+            # atributos[-1] == 0 -> nao_recorrente
             if(atributos[-1] == '0'):
                 valor_nao_recorrencia[index_atributo][atributo_aux] += 1
             else:
                 valor_recorrencia[index_atributo][atributo_aux] += 1
 
-        if(atributos[-2] == '2' or atributos[-5] == '1'):
+        # atributos[-2] == 2 -> irradiada == no
+        # atributos[-5] != 3 -> deg-malig != 3
+        if(atributos[-2] == '2' and atributos[-5] != '3'):
             if(atributos[-1] == '0'):
-                teste_nao_recorrencia_certo+=1
+                nao_recorrencias_classificadas_corretamente+=1
             else:
-                teste_recorrencia_errado+=1
+                recorrencias_classificadas_como_nao_recorrencias+=1
         else:
             if(atributos[-1] == '1'):
-                teste_recorrencia_certo+=1
+                recorrencias_classificadas_corretamente+=1
             else:
-                teste_nao_recorrencia_errado+=1
+                nao_recorrencias_classificadas_como_recorrencias+=1
 
     nome_atributos = ['idade', 'menopausa', 'tamanho do tumor', 'inv-nodes',
                       'node-caps', 'deg-malig', 'mama', 'breast-quad', 'irradiada']
@@ -72,11 +74,13 @@ with open('bd_dedutivo/nova_coluna/bd_dedutivo_inteiro_python_novaColuna.txt','r
     for i in range(9):
         print('-----', nome_atributos[i], '-----')
         print("VALOR TOTAL:", valor_total[i])
-        print("VALOR RECORRENCIA", valor_recorrencia[i])
-        print("VALOR NAO RECORRENCIA", valor_nao_recorrencia[i])
+        print("VALOR RECORRENCIA:", valor_recorrencia[i])
+        print("VALOR NAO RECORRENCIA:", valor_nao_recorrencia[i])
     
     print('------------------------------')
-    print("TESTE RECORRENCIA CERTO", teste_recorrencia_certo)
-    print("TESTE RECORRENCIA ERRADO", teste_recorrencia_errado)
-    print("TESTE NAO RECORRENCIA CERTO", teste_nao_recorrencia_certo)
-    print("TESTE NAO RECORRENCIA ERRADO", teste_nao_recorrencia_errado)
+    print("RECORRENCIAS CLASSIFICADAS CORRETAMENTE:", recorrencias_classificadas_corretamente)
+    print("RECORRENCIAS CLASSIFICADAS COMO NAO RECORRENCIAS:", recorrencias_classificadas_como_nao_recorrencias)
+    print("PORCENTAGEM DE RECORRENCIAS CLASSIFICADAS CORRETAMENTE:", recorrencias_classificadas_corretamente/(recorrencias_classificadas_corretamente + recorrencias_classificadas_como_nao_recorrencias))
+    print("NAO RECORRENCIAS CLASSIFICADAS CORRETAMENTE:", nao_recorrencias_classificadas_corretamente)
+    print("NAO RECORRENCIAS CLASSIFICADAS COMO RECORRENCIAS:", nao_recorrencias_classificadas_como_recorrencias)
+    print("PORCENTAGEM DE NAO RECORRENCIAS CLASSIFICADAS CORRETAMENTE:", nao_recorrencias_classificadas_corretamente/(nao_recorrencias_classificadas_corretamente + nao_recorrencias_classificadas_como_recorrencias))
