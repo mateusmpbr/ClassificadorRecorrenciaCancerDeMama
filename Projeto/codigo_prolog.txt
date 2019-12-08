@@ -1,3 +1,6 @@
+---------------------------
+[SCRIPT]
+----------------------------
 individuo(3,3,7,1,2,3,1,2,2).
 individuo(4,3,5,1,2,2,2,3,2).
 individuo(4,3,5,1,2,2,1,2,2).
@@ -275,3 +278,16 @@ individuo(3,3,5,1,2,3,1,1,1).
 individuo(6,2,5,1,2,1,2,1,2).
 individuo(4,2,7,2,2,3,1,2,2).
 individuo(5,2,7,2,2,3,1,2,2).
+
+ehRecorrente(X,Y):- \+ (X\=3 , Y == 2).
+classificaComoRecorrente:-individuo(_,_,_,_,_,X,_,_,Y),ehRecorrente(X,Y).
+ehNaoRecorrente(X,Y):- X\=3 , Y == 2.
+classificaComoNaoRecorrente:-individuo(_,_,_,_,_,X,_,_,Y),ehNaoRecorrente(X,Y).
+classifica(NumRecorrente, NumNaoRecorrente):-
+	findall(count, classificaComoRecorrente, M), length(M, NumRecorrente),
+   	findall(count, classificaComoNaoRecorrente, N), length(N, NumNaoRecorrente).
+
+---------------------------
+[INPUT]
+----------------------------
+classifica(NumeroRecorrentes,NumeroNaoRecorrentes).
