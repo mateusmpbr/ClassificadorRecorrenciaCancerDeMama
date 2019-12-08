@@ -57,7 +57,7 @@ with open('bd_dedutivo/nova_coluna/bd_dedutivo_inteiro_python_novaColuna.txt','r
 
         # atributos[-2] == 2 -> irradiada == no
         # atributos[-5] != 3 -> deg-malig != 3
-        if(atributos[-2] == '2' and atributos[-5] != '3'):
+        if(atributos[5] != '3' and atributos[8] == '2'):
             if(atributos[-1] == '0'):
                 nao_recorrencias_classificadas_corretamente+=1
             else:
