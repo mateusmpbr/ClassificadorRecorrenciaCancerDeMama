@@ -1,4 +1,4 @@
-with open('bd_dedutivo/nova_coluna/bd_dedutivo_inteiro_python_novaColuna.txt','r') as f:
+with open('bd_dedutivo/nova_coluna/bd_dedutivo_inteiro_python_coluna_r_nr.txt','r') as f:
     valor_total = [
         [0, 0, 0, 0, 0, 0, 0, 0, 0],
         [0, 0, 0],
