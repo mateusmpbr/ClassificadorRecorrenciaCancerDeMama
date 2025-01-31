@@ -1,3 +1,2 @@
 # ClassificadorRecorrenciaCancerDeMama
-O projeto consiste em um classificador binário desenvolvido em Prolog para identificar casos de recorrência e não-recorrência de câncer de mama do Instituto de Oncologia de Liubliana
-
+Esse projeto consiste em criar um método de classificação binária capaz de classificar corretamente pacientes do Instituto de Oncologia de Liubliana com câncer de mama como recorrentes ou não-recorrentes. A linguagem utilizada é Prolog. O projeto foi apresentado na disciplina de Linguagens de Programação, durante a minha graduação em Sistemas de Informação, na UFOP.
